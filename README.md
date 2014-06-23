@@ -9,7 +9,7 @@ Requirements
 Cookbooks
 ---------
 
-coldfusion902
+coldfusion10
 
 Attributes
 ==========
