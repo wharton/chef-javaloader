@@ -23,7 +23,7 @@ package "unzip" do
   action :install
 end
 
-node.set['javaloader']['owner'] = "nobody" if node['javaloader']['owner'] == nil
+node.set['javaloader']['owner'] = node['cf10']['installer']['runtimeuser'] if node['javaloader']['owner'] == nil
 
 file_name = node['javaloader']['download']['url'].split('/').last
 
@@ -69,7 +69,7 @@ execute "start_cf_for_javaloader_default_cf_config" do
   notifies :start, "service[coldfusion]", :immediately
 end
 
-coldfusion902_config "extensions" do
+coldfusion10_config "extensions" do
   action :set
   property "mapping"
   args ({ "mapName" => "/javaloader",
