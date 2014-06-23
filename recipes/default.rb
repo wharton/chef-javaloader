@@ -23,7 +23,7 @@ package "unzip" do
   action :install
 end
 
-node.set['javaloader']['owner'] = "nobody" if node['javaloader']['owner'] == nil
+node.set['javaloader']['owner'] = node['cf10']['installer']['runtimeuser'] if node['javaloader']['owner'] == nil
 
 file_name = node['javaloader']['download']['url'].split('/').last
 
