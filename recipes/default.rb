@@ -56,7 +56,7 @@ script "install_javaloader" do
   user "root"
   cwd "#{Chef::Config['file_cache_path']}"
   code <<-EOH
-unzip #{file_name} -d #{node['javaloader']['install_path']}/javaloader 
+unzip #{file_name} "javaloader/*" -d #{node['javaloader']['install_path']} 
 chown -R #{node['javaloader']['owner']}:#{node['javaloader']['group']} #{node['javaloader']['install_path']}/javaloader
 EOH
   not_if { File.directory?("#{node['javaloader']['install_path']}/javaloader") }
